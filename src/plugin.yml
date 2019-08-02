@@ -1,0 +1,21 @@
+name: PlayerShop
+version: 1.0
+author: GABRYCA
+main: it.gabryca.playershop.Main
+website: https://www.onlyplay.tk
+commands:
+  setshop:
+    description: Make a shop where's the player
+    usage: /<command>
+  shopvisit:
+    description: Go to a shop of a player
+    usage: /<command> <Shop_Player_Name>
+    aliases:
+      - shopv
+      - sv
+  shops:
+    description: Open a GUI with a list of shops
+    usage: /<command>
+  delshop:
+    description: Delete your shop or another player shop (you'll need a permission)
+    usage: /<command>

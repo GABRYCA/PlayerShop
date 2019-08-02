@@ -1,0 +1,18 @@
+Messages:
+  Warn-PlayerAlreadyHaveShop: "You already created a shop, please delete it if you want to make a new one"
+  Warn-NotAPlayer: "You aren't a player (Hi console!)"
+  Warn-permission: "You don't have the permission to do that"
+  Warn-WrongFormat: "Wrong format, try to add the player name"
+  Warn-NoShops: "There aren't shops of that player"
+  Warn-NotOnGround: "You must be on the ground to set a shop spawnpoint! -_-"
+  Shop-Set-Successful: "Shop created with success on your location!"
+  Shop-Teleport-Successful: "Teleported to the shop with success"
+  Shop-Deleted-Successful: "Shop deleted with success!"
+
+Permissions:
+  setshop: playershop.setshop
+  delshop: playershop.delshop.others
+
+MaxShopsNumber: 45
+
+shops:
