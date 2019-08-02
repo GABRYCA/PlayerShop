@@ -11,8 +11,3 @@ Messages:
 
 Permissions:
   setshop: playershop.setshop
-  delshop: playershop.delshop.others
-
-MaxShopsNumber: 45
-
-shops:
