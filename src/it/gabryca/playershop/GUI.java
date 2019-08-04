@@ -1,6 +1,8 @@
 package it.gabryca.playershop;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -46,8 +48,10 @@ public class GUI {
         }
         Inventory inv = Bukkit.createInventory(null,dimension,"§aPlayerShops");
         for (String key : shops) {
+            List<String> lore = new ArrayList<String>();
+            lore.add("§a" + config.getString("Messages.Click-to-teleport"));
             String display = config.getString("shops." + key + ".position.name");
-            inv.addItem(createButton(Material.EMERALD_BLOCK, 1, null, "§6" + display));
+            inv.addItem(createButton(Material.EMERALD_BLOCK, 1, lore, "§6" + display));
         }
 
         this.p.openInventory(inv);

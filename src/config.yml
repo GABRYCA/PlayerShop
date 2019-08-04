@@ -8,6 +8,8 @@ Messages:
   Shop-Set-Successful: "Shop created with success on your location!"
   Shop-Teleport-Successful: "Teleported to the shop with success"
   Shop-Deleted-Successful: "Shop deleted with success!"
+  Click-to-teleport: "Click to teleport to this playershop"
 
 Permissions:
   setshop: playershop.setshop
+  delshop-others: playershop.delshop.others

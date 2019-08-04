@@ -14,7 +14,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println(ChatColor.GREEN + "[PlayerShop] Plugin abilitato con successo!");
+        System.out.println(ChatColor.GREEN + "[PlayerShop] Plugin enabled with success!");
         Bukkit.getPluginManager().registerEvents(new listeners(),this);
         getCommand("delshop").setExecutor(new delshop());
         getCommand("setshop").setExecutor(new setshop());
@@ -27,6 +27,6 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        System.out.println(ChatColor.RED + "[PlayerShop] Plugin disabilitato con successo!");
+        System.out.println(ChatColor.RED + "[PlayerShop] Plugin disabled with success!");
     }
 }
