@@ -23,7 +23,7 @@ public class listeners implements Listener {
             if (e.getCurrentItem() == null)
                 return;
 
-            if (e.getClickedInventory().getTitle().equals("§a" + "PlayerShops"))
+            if (e.getClickedInventory().getTitle().equals("§aPlayerShops"))
             if (e.getCurrentItem() != null) {
                 if (e.getCurrentItem().hasItemMeta()) {
                     double x = config.getDouble("shops." + e.getCurrentItem().getItemMeta().getDisplayName().substring(2) + ".position.X");
