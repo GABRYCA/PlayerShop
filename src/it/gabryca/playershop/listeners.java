@@ -23,6 +23,7 @@ public class listeners implements Listener {
             if (e.getCurrentItem() == null)
                 return;
 
+            if (e.getClickedInventory().getTitle().equals("§aPlayerShops"))
             if (e.getCurrentItem() != null) {
                 if (e.getCurrentItem().hasItemMeta()) {
                     double x = config.getDouble("shops." + e.getCurrentItem().getItemMeta().getDisplayName().substring(2) + ".position.X");
@@ -33,10 +34,6 @@ public class listeners implements Listener {
                     p.teleport(new Location(world, x, y, z));
                     p.sendMessage("§a" + config.getString("Messages.Shop-Teleport-Successful"));
                 }
-            }
-
-            if (e.getClickedInventory().getTitle().equals("§aPlayerShops")){
-                e.setCancelled(true);
             }
 
         }
