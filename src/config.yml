@@ -1,16 +1,3 @@
-Messages:
-  Warn-PlayerAlreadyHaveShop: "You already created a shop, please delete it if you want to make a new one"
-  Warn-NotAPlayer: "You aren't a player (Hi console!)"
-  Warn-permission: "You don't have the permission to do that"
-  Warn-WrongFormat: "Wrong format, try to add the player name"
-  Warn-NoShops: "There aren't shops of that player"
-  Warn-NoShopsEverCreated: "There isn't a -shops:- section in the config, this could mean no shops got ever created! Create one now with /setshop"
-  Warn-NotOnGround: "You must be on the ground to set a shop spawnpoint! -_-"
-  Shop-Set-Successful: "Shop created with success on your location!"
-  Shop-Teleport-Successful: "Teleported to the shop with success"
-  Shop-Deleted-Successful: "Shop deleted with success!"
-  Click-to-teleport: "Click to teleport to this playershop"
-
 Permissions:
   setshop: playershop.setshop
   delshop-others: playershop.delshop.others

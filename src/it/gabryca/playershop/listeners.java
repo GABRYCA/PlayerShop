@@ -19,6 +19,7 @@ public class listeners implements Listener {
 
             Player p = (Player) e.getWhoClicked();
             Configuration config = Main.getInstance().getConfig();
+            Configuration message = Main.getMessages();
 
             if (e.getCurrentItem() == null)
                 return;
@@ -32,7 +33,7 @@ public class listeners implements Listener {
                     String worldname = config.getString("shops." + e.getCurrentItem().getItemMeta().getDisplayName().substring(2) + ".position.world");
                     World world = Main.getInstance().getServer().getWorld(worldname);
                     p.teleport(new Location(world, x, y, z));
-                    p.sendMessage("§a" + config.getString("Messages.Shop-Teleport-Successful"));
+                    p.sendMessage("§a" + message.getString("Messages.Shop-Teleport-Successful"));
                 }
             }
 

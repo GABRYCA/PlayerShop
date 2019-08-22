@@ -12,6 +12,7 @@ public class shops implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         Configuration config = Main.getInstance().getConfig();
+        Configuration message = Main.getMessages();
 
         if (commandSender instanceof Player) {
             if (config.getConfigurationSection("shops") != null) {
@@ -19,10 +20,11 @@ public class shops implements CommandExecutor {
                 GUI gui = new GUI(p);
                 gui.open();
             } else {
-                commandSender.sendMessage("§c" + config.getString("Messages.Warn-NoShopsEverCreated"));
+                commandSender.sendMessage("§c" + message.getString("Messages.Warn-NoShopsEverCreated"));
             }
 
         }
-            return true;
+        commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
+        return true;
     }
 }

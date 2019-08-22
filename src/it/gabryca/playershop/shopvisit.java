@@ -15,10 +15,11 @@ public class shopvisit implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         Configuration config = Main.getInstance().getConfig();
+        Configuration message = Main.getMessages();
         if (commandSender instanceof Player){
             if (strings.length == 1){
                 if (config.getString("shops." + strings[0] + ".position.name") == null){
-                    commandSender.sendMessage("§c" + config.getString("Messages.Warn-NoShops"));
+                    commandSender.sendMessage("§c" + message.getString("Messages.Warn-NoShops"));
                     return true;
                 }
                 if (config.getString("shops." + strings[0] + ".position.name").equals(strings[0])){
@@ -28,13 +29,13 @@ public class shopvisit implements CommandExecutor {
                     String worldname = config.getString("shops." + strings[0] + ".position.world");
                     World world = Main.getInstance().getServer().getWorld(worldname);
                     ((Player) commandSender).teleport(new Location(world,x,y,z));
-                    commandSender.sendMessage("§a" + config.getString("Messages.Shop-Teleport-Successful"));
+                    commandSender.sendMessage("§a" + message.getString("Messages.Shop-Teleport-Successful"));
                 }
             } else {
-                commandSender.sendMessage("§c" + config.getString("Messages.Warn-WrongFormat"));
+                commandSender.sendMessage("§c" + message.getString("Messages.Warn-WrongFormat"));
             }
         } else {
-            commandSender.sendMessage("§c" + config.getString("Messages.Warn-NotAPlayer"));
+            commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
         }
         return true;
     }

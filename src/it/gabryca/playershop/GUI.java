@@ -41,6 +41,8 @@ public class GUI {
     public void open() {
 
         Configuration config = Main.getInstance().getConfig();
+        Configuration message = Main.getMessages();
+
         Set<String> shops = config.getConfigurationSection("shops").getKeys(false);
         int num = shops.size();
         while (dimension < num + 8) {
@@ -49,7 +51,7 @@ public class GUI {
         Inventory inv = Bukkit.createInventory(null,dimension,"§aPlayerShops");
         for (String key : shops) {
             List<String> lore = new ArrayList<String>();
-            lore.add("§a" + config.getString("Messages.Click-to-teleport"));
+            lore.add("§a" + message.getString("Messages.Click-to-teleport"));
             String display = config.getString("shops." + key + ".position.name");
             inv.addItem(createButton(Material.EMERALD_BLOCK, 1, lore, "§6" + display));
         }

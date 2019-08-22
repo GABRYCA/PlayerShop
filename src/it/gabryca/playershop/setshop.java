@@ -15,6 +15,7 @@ public class setshop implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         Configuration config = Main.getInstance().getConfig();
+        Configuration message = Main.getMessages();
         if (commandSender instanceof Player){
             if (commandSender.hasPermission(config.getString("Permissions.setshop"))){
                 if (!(((Player) commandSender).isFlying())){
@@ -29,15 +30,15 @@ public class setshop implements CommandExecutor {
                     config.set("shops." + commandSender.getName() + ".position.Z", Z);
                     config.set("shops." + commandSender.getName() + ".position.world", world);
                     Main.getInstance().saveConfig();
-                    commandSender.sendMessage("§a" + config.getString("Messages.Shop-Set-Successful"));
+                    commandSender.sendMessage("§a" + message.getString("Messages.Shop-Set-Successful"));
                 } else {
-                    commandSender.sendMessage("§c" + config.getString("Messages.Warn-NotOnGround"));
+                    commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotOnGround"));
                 }
             } else {
-                commandSender.sendMessage("§c" + config.getString("Messages.Warn-permission") + " " +  Main.getInstance().getConfig().getString("Permissions.setshop"));
+                commandSender.sendMessage("§c" + message.getString("Messages.Warn-permission") + " " +  config.getString("Permissions.setshop"));
             }
         } else {
-            commandSender.sendMessage("§c" + config.getString("Messages.Warn-NotAPlayer"));
+            commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
         }
         return true;
     }
