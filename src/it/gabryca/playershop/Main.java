@@ -21,6 +21,7 @@ public class Main extends JavaPlugin {
         getCommand("setshop").setExecutor(new setshop());
         getCommand("shopvisit").setExecutor(new shopvisit());
         getCommand("shops").setExecutor(new shops());
+        getCommand("Playershop").setExecutor(new Playershop());
         this.saveDefaultConfig();
         config = this;
         this.saveConfig();

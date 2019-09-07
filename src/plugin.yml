@@ -1,5 +1,5 @@
 name: PlayerShop
-version: 1.2.2
+version: 1.3.0
 author: GABRYCA
 main: it.gabryca.playershop.Main
 website: https://www.onlyplay.tk
@@ -18,4 +18,7 @@ commands:
     usage: /<command>
   delshop:
     description: Delete your shop or another player shop (you'll need a permission)
+    usage: /<command>
+  Playershop:
+    description: Show all commands
     usage: /<command>

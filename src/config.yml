@@ -1,3 +1,4 @@
 Permissions:
   setshop: playershop.setshop
   delshop-others: playershop.delshop.others
+  playershop-command: playershop.playershop
