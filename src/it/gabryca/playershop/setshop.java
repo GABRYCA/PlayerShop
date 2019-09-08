@@ -24,6 +24,7 @@ public class setshop implements CommandExecutor {
                     double X = loc.getX();
                     double Y = loc.getY();
                     double Z = loc.getZ();
+                    config.set("shops." + commandSender.getName() + ".position.block", "EMERALD_BLOCK");
                     config.set("shops." + commandSender.getName() + ".position.name", commandSender.getName());
                     config.set("shops." + commandSender.getName() + ".position.X", X);
                     config.set("shops." + commandSender.getName() + ".position.Y", Y);

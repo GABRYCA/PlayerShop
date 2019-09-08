@@ -53,7 +53,7 @@ public class GUI {
             List<String> lore = new ArrayList<String>();
             lore.add("§a" + message.getString("Messages.Click-to-teleport"));
             String display = config.getString("shops." + key + ".position.name");
-            inv.addItem(createButton(Material.EMERALD_BLOCK, 1, lore, "§6" + display));
+            inv.addItem(createButton(Material.valueOf(config.getString("shops." + key + ".position.block")), 1, lore, "§6" + display));
         }
 
         this.p.openInventory(inv);

@@ -23,8 +23,9 @@ public class shops implements CommandExecutor {
                 commandSender.sendMessage("§c" + message.getString("Messages.Warn-NoShopsEverCreated"));
             }
 
+        } else {
+            commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
         }
-        commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
         return true;
     }
 }
