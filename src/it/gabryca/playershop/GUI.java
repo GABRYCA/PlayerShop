@@ -18,8 +18,6 @@ import java.util.Set;
 
 public class GUI {
 
-    int y = 0;
-    int x = 0;
     int dimension = 0;
     private Player p;
 
@@ -43,20 +41,26 @@ public class GUI {
         Configuration config = Main.getInstance().getConfig();
         Configuration message = Main.getMessages();
 
-        Set<String> shops = config.getConfigurationSection("shops").getKeys(false);
-        int num = shops.size();
-        while (dimension < num + 8) {
-            dimension = dimension + 9;
+        if (config.getConfigurationSection("shops") != null) {
+            Set<String> shops = config.getConfigurationSection("shops").getKeys(false);
+            int num = shops.size();
+            while (dimension < num + 8) {
+                dimension = dimension + 9;
+            }
+            Inventory inv = Bukkit.createInventory(null, dimension, "§aShops");
+            for (String key : shops) {
+                Set<String> number = config.getConfigurationSection("shops." + key).getKeys(false);
+                for (String key2 : number) {
+                    List<String> lore = new ArrayList<String>();
+                    lore.add("§a" + message.getString("Messages.Click-to-teleport"));
+                    String display = config.getString("shops." + key + "." + key2 + ".position.name") + " " + key2;
+                    inv.addItem(createButton(Material.valueOf(config.getString("shops." + key + "." + key2 + ".position.block")), 1, lore, "§6" + display));
+                }
+            }
+            this.p.openInventory(inv);
+        } else {
+            p.closeInventory();
+            p.sendMessage(message.getString("Messages.Warn-NoShopsEverCreated"));
         }
-        Inventory inv = Bukkit.createInventory(null,dimension,"§aPlayerShops");
-        for (String key : shops) {
-            List<String> lore = new ArrayList<String>();
-            lore.add("§a" + message.getString("Messages.Click-to-teleport"));
-            String display = config.getString("shops." + key + ".position.name");
-            inv.addItem(createButton(Material.valueOf(config.getString("shops." + key + ".position.block")), 1, lore, "§6" + display));
-        }
-
-        this.p.openInventory(inv);
     }
-
 }

@@ -17,12 +17,9 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         System.out.println(ChatColor.GREEN + "[PlayerShop] Plugin enabled with success!");
         Bukkit.getPluginManager().registerEvents(new listeners(),this);
-        getCommand("delshop").setExecutor(new delshop());
-        getCommand("setshop").setExecutor(new setshop());
-        getCommand("shopvisit").setExecutor(new shopvisit());
         getCommand("shops").setExecutor(new shops());
-        getCommand("Playershop").setExecutor(new Playershop());
         getCommand("shoplogo").setExecutor(new shoplogo());
+        getCommand("Playershop").setExecutor(new Playershop());
         this.saveDefaultConfig();
         config = this;
         this.saveConfig();

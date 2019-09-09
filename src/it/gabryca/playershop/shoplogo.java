@@ -16,19 +16,19 @@ public class shoplogo implements CommandExecutor {
         Configuration message = Main.getMessages();
 
         if (commandSender.hasPermission(config.getString("Permissions.setshop"))){
-            if (strings.length == 1){
+            if (strings.length == 2){
                 if (commandSender instanceof Player){
-                    if (!(config.getString("shops." + commandSender.getName() + ".position.name") == null)){
                         if(!(Material.getMaterial(strings[0]) == null)) {
-                            config.set("shops." + commandSender.getName() + ".position.block", strings[0]);
-                            Main.getInstance().saveConfig();
-                            commandSender.sendMessage("§a" + message.getString("Messages.Shop-Logo-Set"));
+                            if (!(config.getString("shops." + commandSender.getName() + "." + strings[1] + ".position.name" ) == null)) {
+                                config.set("shops." + commandSender.getName() + "." + strings[1] + ".position.block", strings[0]);
+                                Main.getInstance().saveConfig();
+                                commandSender.sendMessage("§a" + message.getString("Messages.Shop-Logo-Set"));
+                            } else {
+                                commandSender.sendMessage("§c" + message.getString("Messages.Warn-DontHaveShop"));
+                            }
                         } else {
                             commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotABlock"));
                         }
-                    } else {
-                        commandSender.sendMessage("§c" + message.getString("Messages.Warn-DontHaveShop"));
-                    }
                 } else {
                     commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
                 }

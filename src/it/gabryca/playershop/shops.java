@@ -15,13 +15,9 @@ public class shops implements CommandExecutor {
         Configuration message = Main.getMessages();
 
         if (commandSender instanceof Player) {
-            if (config.getConfigurationSection("shops") != null) {
                 Player p = (Player) commandSender;
-                GUI gui = new GUI(p);
+                MainGUI gui = new MainGUI(p);
                 gui.open();
-            } else {
-                commandSender.sendMessage("§c" + message.getString("Messages.Warn-NoShopsEverCreated"));
-            }
 
         } else {
             commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
