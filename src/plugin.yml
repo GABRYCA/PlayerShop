@@ -1,8 +1,9 @@
 name: PlayerShop
-version: 1.5.0
+version: 1.5.1
 author: GABRYCA
 main: it.gabryca.playershop.Main
-website: https://www.onlyplay.tk
+website: https://www.gabryca.tk
+api-version: 1.13
 commands:
   shoplogo:
     description: Change the block logo
