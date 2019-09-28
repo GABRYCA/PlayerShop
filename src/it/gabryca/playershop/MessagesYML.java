@@ -6,12 +6,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-public class MessagesYML {
+class MessagesYML {
 
     private File file = new File(Main.getInstance().getDataFolder()+"/messages.yml");
     private FileConfiguration conf;
 
-    public MessagesYML() {
+    MessagesYML() {
         if(!file.exists()){
             try {
                 file.createNewFile();
@@ -53,7 +53,7 @@ public class MessagesYML {
         conf = YamlConfiguration.loadConfiguration(file);
     }
 
-    public FileConfiguration getFile(){
+    FileConfiguration getFile(){
         return conf;
     }
 

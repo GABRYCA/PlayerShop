@@ -12,16 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class GUI {
+class GUI {
 
     int dimension = 0;
     private Player p;
 
-    public GUI(Player p){
+    GUI(Player p){
         this.p = p;
     }
 
-    public ItemStack createButton(Material id, int amount, List<String> lore, String display) {
+    private ItemStack createButton(Material id, int amount, List<String> lore, String display) {
 
         ItemStack item = new ItemStack(id, amount);
         ItemMeta meta = item.getItemMeta();
@@ -32,7 +32,7 @@ public class GUI {
         return item;
     }
 
-    public void open() {
+    void open() {
 
         Configuration config = Main.getInstance().getConfig();
         Configuration message = Main.getMessages();

@@ -15,30 +15,34 @@ public class shoplogo implements CommandExecutor {
         Configuration config = Main.getInstance().getConfig();
         Configuration message = Main.getMessages();
 
-        if (commandSender.hasPermission(config.getString("Permissions.setshop"))){
-            if (strings.length == 2){
-                if (commandSender instanceof Player){
-                        if(!(Material.getMaterial(strings[0]) == null)) {
-                            if (!(config.getString("shops." + commandSender.getName() + "." + strings[1] + ".position.name" ) == null)) {
-                                config.set("shops." + commandSender.getName() + "." + strings[1] + ".position.block", strings[0]);
-                                Main.getInstance().saveConfig();
-                                commandSender.sendMessage("§a" + message.getString("Messages.Shop-Logo-Set"));
-                            } else {
-                                commandSender.sendMessage("§c" + message.getString("Messages.Warn-DontHaveShop"));
-                            }
-                        } else {
-                            commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotABlock"));
-                        }
-                } else {
-                    commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
-                }
-            } else {
-                commandSender.sendMessage("§c" + message.getString("Messages.Warn-WrongFormat"));
-            }
-        } else {
+        if (!(commandSender.hasPermission(config.getString("Permissions.setshop")))){
             commandSender.sendMessage("§c" + message.getString("Messages.Warn-permission") + " " +  config.getString("Permissions.setshop"));
+            return true;
         }
 
+        if (!(strings.length == 2)){
+            commandSender.sendMessage("§c" + message.getString("Messages.Warn-WrongFormat"));
+            return true;
+        }
+
+        if (!(commandSender instanceof Player)){
+            commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotAPlayer"));
+            return true;
+        }
+
+        if (Material.getMaterial(strings[0]) == null){
+            commandSender.sendMessage("§c" + message.getString("Messages.Warn-NotABlock"));
+            return true;
+        }
+
+        if ((config.getString("shops." + commandSender.getName() + "." + strings[1] + ".position.name" ) == null)){
+            commandSender.sendMessage("§c" + message.getString("Messages.Warn-DontHaveShop"));
+            return true;
+        }
+
+        config.set("shops." + commandSender.getName() + "." + strings[1] + ".position.block", strings[0]);
+        Main.getInstance().saveConfig();
+        commandSender.sendMessage("§a" + message.getString("Messages.Shop-Logo-Set"));
         return true;
     }
 }

@@ -7,9 +7,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 
-    public static Main config;
+    private static Main config;
 
-    public static Main getInstance(){
+    static Main getInstance(){
         return config;
     }
 
@@ -31,7 +31,7 @@ public class Main extends JavaPlugin {
         System.out.println(ChatColor.RED + "[PlayerShop] Plugin disabled with success!");
     }
 
-    public static FileConfiguration getMessages(){
+    static FileConfiguration getMessages(){
         MessagesYML messages = new MessagesYML();
         return messages.getFile();
     }

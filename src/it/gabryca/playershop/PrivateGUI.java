@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class PrivateGUI {
+class PrivateGUI {
 
     int dimension = 54;
     private Player p;
 
-    public PrivateGUI(Player p){
+    PrivateGUI(Player p){
         this.p = p;
     }
 
@@ -32,7 +32,7 @@ public class PrivateGUI {
         return item;
     }
 
-    public void open() {
+    void open() {
 
         Configuration config = Main.getInstance().getConfig();
         Configuration message = Main.getMessages();
@@ -54,23 +54,26 @@ public class PrivateGUI {
             for (String key : shops) {
                 Set<String> number = config.getConfigurationSection("shops." + player).getKeys(false);
                 for (String key2 : number) {
-                    if (config.getString("shops." + player + "." + key2 + ".position.name").equals(player)) {
-                        List<String> lore = new ArrayList<String>();
-                        lore.add("§b" + message.getString("Messages.Shop-LeftClick-Logo"));
-                        lore.add("§c" + message.getString("Messages.Shop-RightClick-Delete"));
-                        String display = config.getString("shops." + player + "." + key2 + ".position.name") + " " + key2;
-                        inv.addItem(createButton(Material.valueOf(config.getString("shops." + player + "." + key2 + ".position.block")), 1, lore, "§6" + display));
-                        List<String> lore2 = new ArrayList<String>();
-                        String display2 = message.getString("Messages.Shop-Add");
-                        lore2.add("§7" + message.getString("Messages.Shop-Set-Here"));
-                        inv.setItem(47, createButton(Material.EMERALD_BLOCK, 1, lore2, "§6" + display2));
 
-                        List<String> lore3 = new ArrayList<String>();
-                        String display3 = message.getString("Messages.Shop-Limit");
-                        inv.setItem(49, createButton(Material.PAPER, 1, lore3, "§c" + display3 + " §6" + num + "/" + getLimit));
-
-                        this.p.openInventory(inv);
+                    if (!(config.getString("shops." + player + "." + key2 + ".position.name").equals(player))){
+                        return;
                     }
+
+                    List<String> lore = new ArrayList<String>();
+                    lore.add("§b" + message.getString("Messages.Shop-LeftClick-Logo"));
+                    lore.add("§c" + message.getString("Messages.Shop-RightClick-Delete"));
+                    String display = config.getString("shops." + player + "." + key2 + ".position.name") + " " + key2;
+                    inv.addItem(createButton(Material.valueOf(config.getString("shops." + player + "." + key2 + ".position.block")), 1, lore, "§6" + display));
+                    List<String> lore2 = new ArrayList<String>();
+                    String display2 = message.getString("Messages.Shop-Add");
+                    lore2.add("§7" + message.getString("Messages.Shop-Set-Here"));
+                    inv.setItem(47, createButton(Material.EMERALD_BLOCK, 1, lore2, "§6" + display2));
+
+                    List<String> lore3 = new ArrayList<String>();
+                    String display3 = message.getString("Messages.Shop-Limit");
+                    inv.setItem(49, createButton(Material.PAPER, 1, lore3, "§c" + display3 + " §6" + num + "/" + getLimit));
+
+                    this.p.openInventory(inv);
                 }
             }
         } else {

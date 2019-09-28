@@ -14,16 +14,13 @@ public class Playershop implements CommandExecutor {
         Configuration message = Main.getMessages();
 
         if (commandSender.hasPermission(config.getString("Permissions.playershop-command"))){
-
             commandSender.sendMessage("§7§lCommands:");
             commandSender.sendMessage("§7 - §b /shops");
             commandSender.sendMessage("§7 - §b /Playershop");
             commandSender.sendMessage("§7 - §b /Shoplogo <Block-ID> <Shop_Number>");
-
         } else {
             commandSender.sendMessage("§c" + message.getString("Messages.Warn-permission") + " " +  config.getString("Permissions.playershop-command"));
         }
-
         return true;
     }
 
