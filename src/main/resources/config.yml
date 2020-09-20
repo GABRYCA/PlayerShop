@@ -1,0 +1,6 @@
+Permissions:
+  pshop: playershop.admin
+
+Options:
+  playershop-max-limit-default: 10
+  playershop-default-block: EMERALD_BLOCK

@@ -1,0 +1,15 @@
+name: PlayerShop
+version: @version@
+main: it.gabryca.playershop.PlayerShop
+api-version: 1.13
+prefix: PlayerShop
+authors: [ GABRYCA ]
+description: A plugin to let players add their own spawpoint at home where others can tp there, this's useful for something like an old style shop.
+website: gabryca.jar-mc.com
+commands:
+  pshops:
+    description: Opens a GUI showing a list of shops
+    usage: /<command>
+  pshop:
+    description: Show all commands and alias
+    usage: /<command>

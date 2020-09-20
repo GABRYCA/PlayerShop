@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="PlayerShop">
-    <output-path>$PROJECT_DIR$/../../server test per i plugins/plugins</output-path>
-    <root id="archive" name="PlayerShop.jar">
-      <element id="module-output" name="PlayerShop" />
-    </root>
-  </artifact>
-</component>

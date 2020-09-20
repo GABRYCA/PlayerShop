@@ -1,7 +1,0 @@
-Permissions:
-  setshop: playershop.setshop
-  delshop-others: playershop.delshop.others
-  playershop-command: playershop.playershop
-  playershop-max-limit-default: 10
-
-shops:
