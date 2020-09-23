@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
@@ -40,6 +41,13 @@ public class Listeners implements Listener {
             activeGui.add(p.getName());
     }
 
+    // Cancel the events of the active GUI opened from the player
+    private void activeGuiEventCanceller(Player p, InventoryClickEvent e){
+        if(activeGui.contains(p.getName())) {
+            e.setCancelled(true);
+        }
+    }
+
     // InventoryClickEvent
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void onClick(InventoryClickEvent e) {
@@ -47,6 +55,24 @@ public class Listeners implements Listener {
         Player p = (Player) e.getWhoClicked();
         Configuration config = PlayerShop.getInstance().getConfig();
         Configuration message = PlayerShop.getMessages();
+
+        // Get action of the Inventory from the event
+        InventoryAction action = e.getAction();
+
+        // If an action equals one of these, and the inventory is open from the player equals
+        // one of the Prison Title, it'll cancel the event
+        if (action.equals(InventoryAction.MOVE_TO_OTHER_INVENTORY) || action.equals(InventoryAction.HOTBAR_SWAP) ||
+                action.equals(InventoryAction.HOTBAR_MOVE_AND_READD) || action.equals(InventoryAction.NOTHING) ||
+                action.equals(InventoryAction.CLONE_STACK) || action.equals(InventoryAction.COLLECT_TO_CURSOR) ||
+                action.equals(InventoryAction.DROP_ONE_SLOT) || action.equals(InventoryAction.DROP_ONE_CURSOR) ||
+                action.equals(InventoryAction.DROP_ALL_SLOT) || action.equals(InventoryAction.DROP_ALL_CURSOR) ||
+                action.equals(InventoryAction.PICKUP_ALL) || action.equals(InventoryAction.PICKUP_HALF) ||
+                action.equals(InventoryAction.PICKUP_ONE) || action.equals(InventoryAction.PICKUP_SOME) ||
+                action.equals(InventoryAction.PLACE_ALL) || action.equals(InventoryAction.PLACE_ONE) ||
+                action.equals(InventoryAction.PLACE_SOME) || action.equals(InventoryAction.SWAP_WITH_CURSOR) ||
+                action.equals(InventoryAction.UNKNOWN)) {
+            activeGuiEventCanceller(p, e);
+        }
 
         if (e.getCurrentItem() == null) {
             return;
@@ -63,6 +89,11 @@ public class Listeners implements Listener {
 
         String shop = e.getCurrentItem().getItemMeta().getDisplayName().substring(2);
         String[] data = shop.split(" ");
+
+        if(activeGui.contains(p.getName())) {
+            e.setCancelled(true);
+        }
+
         if (title.equalsIgnoreCase("PlayerShops")) {
 
             Bukkit.dispatchCommand(p,"pshop tp " + data[0] + " " + data[1]);
