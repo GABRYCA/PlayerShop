@@ -28,5 +28,5 @@ jobs:
     - name: Upload Jar
       uses: actions/upload-artifact@v2
       with:
-          name: app-debug
+          name: PlayerShop
           path: build/libs/PlayerShop-1.6.1.jar
